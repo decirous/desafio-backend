@@ -26,7 +26,7 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository repo;
 
-	public Cliente find(Integer id) {
+	public Cliente find(String id) {
 		 Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 		 "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
@@ -44,7 +44,7 @@ public class ClienteService {
 		return repo.save(newObj);
 	}
 
-	public void delete(Integer id) {
+	public void delete(String id) {
 		try {
 			repo.deleteById(id);
 		}catch (DataIntegrityViolationException e) {

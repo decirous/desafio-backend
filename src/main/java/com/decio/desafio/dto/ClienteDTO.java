@@ -16,7 +16,7 @@ public class ClienteDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private String id;
 	@NotEmpty(message="Preenchimento Obrigatório!")
 	@Length(min = 5, max = 120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
@@ -36,11 +36,11 @@ public class ClienteDTO implements Serializable {
 		this.email = obj.getEmail();
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

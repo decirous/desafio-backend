@@ -35,12 +35,11 @@ public class ClienteUpdateValidador implements ConstraintValidator<ClienteUpdate
 		@SuppressWarnings("unchecked")
 		Map<String, String> mapa = (Map<String, String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 
-		Integer urlId = Integer.parseInt(mapa.get("id"));
+		String urlId = mapa.get("id");
 		
 		List<FieldMessage> list = new ArrayList<>();
 
 		Cliente aux = repo.findByEmail(dto.getEmail());
-		System.out.println("--------------> " + aux.getId().equals(urlId));
 		if (aux != null && !aux.getId().equals(urlId)) {
 			list.add(new FieldMessage("email", "Email existente."));
 		}

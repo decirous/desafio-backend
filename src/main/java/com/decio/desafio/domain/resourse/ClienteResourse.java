@@ -29,7 +29,7 @@ public class ClienteResourse {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/{id}" , method=RequestMethod.GET)
-	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
+	public ResponseEntity<Cliente> find(@PathVariable String id) {
 		Cliente cliente = service.find(id);
 		return ResponseEntity.ok(cliente);
 	}
@@ -45,7 +45,7 @@ public class ClienteResourse {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable String id) {
 		Cliente obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
@@ -54,7 +54,7 @@ public class ClienteResourse {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable String id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
